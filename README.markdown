@@ -1,10 +1,10 @@
 # Doctrine naming strategy bundle
 
-[![Packagist](https://img.shields.io/packagist/v/RunOpenCode/doctrine-naming-strategy-bundle.svg)](https://packagist.org/packages/runopencode/doctrine-naming-strategy-bundle)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/RunOpenCode/doctrine-naming-strategy-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/RunOpenCode/doctrine-naming-strategy-bundle/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/RunOpenCode/doctrine-naming-strategy-bundle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/RunOpenCode/doctrine-naming-strategy-bundle/build-status/master)
-[![Code Coverage](https://scrutinizer-ci.com/g/RunOpenCode/doctrine-naming-strategy-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/RunOpenCode/doctrine-naming-strategy-bundle/?branch=master)
-[![Build Status](https://travis-ci.org/RunOpenCode/doctrine-naming-strategy-bundle.svg?branch=master)](https://travis-ci.org/RunOpenCode/doctrine-naming-strategy-bundle)
+[![Packagist](https://img.shields.io/packagist/v/DailyInfo/doctrine-naming-strategy-bundle.svg)](https://packagist.org/packages/DailyInfo/doctrine-naming-strategy-bundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DailyInfo/doctrine-naming-strategy-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/DailyInfo/doctrine-naming-strategy-bundle/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/DailyInfo/doctrine-naming-strategy-bundle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/DailyInfo/doctrine-naming-strategy-bundle/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/DailyInfo/doctrine-naming-strategy-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/DailyInfo/doctrine-naming-strategy-bundle/?branch=master)
+[![Build Status](https://travis-ci.org/DailyInfo/doctrine-naming-strategy-bundle.svg?branch=master)](https://travis-ci.org/DailyInfo/doctrine-naming-strategy-bundle)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/f6c58d45-2390-4540-9909-c5fb66ed1b62/big.png)](https://insight.sensiolabs.com/projects/f6c58d45-2390-4540-9909-c5fb66ed1b62)
 
@@ -30,11 +30,11 @@ keep good quality naming convention for your Entity tables, prevent table name c
 
 Provided naming strategies within the bundles are:
 
-- `run_open_code.doctrine.orm.naming_strategy.underscored_bundle_prefix`: Extension of default, underscored, naming strategy, which will add a bundle name prefix
+- `daily_info.doctrine.orm.naming_strategy.underscored_bundle_prefix`: Extension of default, underscored, naming strategy, which will add a bundle name prefix
                                                                           to the generated table names.
-- `run_open_code.doctrine.orm.naming_strategy.underscored_class_namespace_prefix`: Extension of default, underscored, naming strategy, which will add a configured prefix
+- `daily_info.doctrine.orm.naming_strategy.underscored_class_namespace_prefix`: Extension of default, underscored, naming strategy, which will add a configured prefix
                                                                                    to the generated table names of the Entities based on its namespace. 
-- `run_open_code.doctrine.orm.naming_strategy.namer_collection`: Namer collection is collection of several naming strategies, and one default naming strategy.
+- `daily_info.doctrine.orm.naming_strategy.namer_collection`: Namer collection is collection of several naming strategies, and one default naming strategy.
                                                                  Default naming strategy will define default name, and then others namers are consulted. 
                                                                  First namer in collection that provides different name from default one finally determines name.
                                                                  This will allow you to mix naming strategies, and in conjunction with white and black lists of provided namers
@@ -44,7 +44,7 @@ Provided naming strategies within the bundles are:
                          
 You can install this bundle by using composer:
                          
-    php composer require "runopencode/doctrine-naming-strategy-bundle"                            
+    php composer require "DailyInfo/doctrine-naming-strategy-bundle"
 
 or you can add bundle name to your `composer.json` and execute `php composer update` command.
                                
@@ -56,7 +56,7 @@ After that, all you need is to add the bundle to your `AppKernel.php`:
         {
             $bundles = array(
                 [... YOUR BUNDLES...],
-                new RunOpenCode\Bundle\DoctrineNamingStrategy\DoctrineNamingStrategyBundle()
+                new DailyInfo\Bundle\DoctrineNamingStrategy\DoctrineNamingStrategyBundle()
             );
                 
             return $bundles;
@@ -74,7 +74,7 @@ tables into database. Otherwise, it will give you a quite an issue if you do not
 
 ## Naming strategies configuration options
 
-### Options for `run_open_code.doctrine.orm.naming_strategy.underscored_bundle_prefix`
+### Options for `daily_info.doctrine.orm.naming_strategy.underscored_bundle_prefix`
 
 - `case`: Optional, enum, possible values: `lowercase` or `uppercase`. Default is `lowercase`.
 - `map`: Optional, array. List of bundle names and desired prefixes to use. Otherwise, namer will use full bundle name without "Bundle" at the end of the bundle name. This is quite useful 
@@ -88,7 +88,7 @@ tables into database. Otherwise, it will give you a quite an issue if you do not
          
 #### Configuration example
          
-    run_open_code_doctrine_naming_strategy:
+    daily_info_doctrine_naming_strategy:
         underscored_bundle_prefix:
             case: lowercase
             map:
@@ -98,7 +98,7 @@ tables into database. Otherwise, it will give you a quite an issue if you do not
                 - DoNotPrefixThisBundle         
 
 
-### Options for `run_open_code.doctrine.orm.naming_strategy.underscored_class_namespace_prefix`
+### Options for `daily_info.doctrine.orm.naming_strategy.underscored_class_namespace_prefix`
 
 - `case`: Optional, enum, possible values: `lowercase` or `uppercase`. Default is `lowercase`.
 - `map`: Required, array. Map of FQCNs prefixes and table prefixes to use when namer stumbles upon Entity class under given FQCN prefix.
@@ -111,7 +111,7 @@ tables into database. Otherwise, it will give you a quite an issue if you do not
 
 #### Configuration example
          
-    run_open_code_doctrine_naming_strategy:
+    daily_info_doctrine_naming_strategy:
         underscored_class_namespace_prefix:
             case: uppercase
             map:
@@ -120,7 +120,7 @@ tables into database. Otherwise, it will give you a quite an issue if you do not
                 - My\Class\Namespace\Entity\ThisShouldBeSkipped
                 - My\Class\Namespace\Entity\ThisShouldBeSkippedAsWell
 
-### Options for `run_open_code.doctrine.orm.naming_strategy.namer_collection`       
+### Options for `daily_info.doctrine.orm.naming_strategy.namer_collection`
 
 - `default`: Optional, default namer to use. Default value is Symfony default namer for ORM, `doctrine.orm.naming_strategy.underscore`.
 - `namers`: List of namers to use for proposing new, different name from name which was provided by default namer. Note that first different proposal wins.
@@ -131,12 +131,12 @@ tables into database. Otherwise, it will give you a quite an issue if you do not
  
 #### Configuration example
 
-    run_open_code_doctrine_naming_strategy:         
+    daily_info_doctrine_naming_strategy:
         namer_collection:
             default: doctrine.orm.naming_strategy.underscore
             namers:
-                - run_open_code.doctrine.orm.naming_strategy.underscored_class_namespace_prefix
-                - run_open_code.doctrine.orm.naming_strategy.underscored_bundle_prefix            
+                - daily_info.doctrine.orm.naming_strategy.underscored_class_namespace_prefix
+                - daily_info.doctrine.orm.naming_strategy.underscored_bundle_prefix
             
             
             

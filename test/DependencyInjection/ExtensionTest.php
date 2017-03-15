@@ -1,17 +1,17 @@
 <?php
 /*
- * This file is part of the Doctrine Naming Strategy Bundle, an RunOpenCode project.
+ * This file is part of the Doctrine Naming Strategy Bundle, an DailyInfo project.
  *
- * (c) 2016 RunOpenCode
+ * (c) 2016 DailyInfo
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace RunOpenCode\Bundle\DoctrineNamingStrategy\Tests\DependencyInjection;
+namespace DailyInfo\Bundle\DoctrineNamingStrategy\Tests\DependencyInjection;
 
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
-use RunOpenCode\Bundle\DoctrineNamingStrategy\DependencyInjection\Extension;
-use RunOpenCode\Bundle\DoctrineNamingStrategy\NamingStrategy\NamerCollection;
+use DailyInfo\Bundle\DoctrineNamingStrategy\DependencyInjection\Extension;
+use DailyInfo\Bundle\DoctrineNamingStrategy\NamingStrategy\NamerCollection;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 
 class ExtensionTest extends AbstractExtensionTestCase
@@ -37,12 +37,12 @@ class ExtensionTest extends AbstractExtensionTestCase
 
         $this->load(array('underscored_bundle_prefix' => $configuration));
 
-        $this->assertContainerBuilderHasService('run_open_code.doctrine.orm.naming_strategy.underscored_bundle_prefix');
+        $this->assertContainerBuilderHasService('daily_info.doctrine.orm.naming_strategy.underscored_bundle_prefix');
 
         $configuration['case'] = CASE_LOWER;
 
         $this->assertContainerBuilderHasServiceDefinitionWithArgument(
-            'run_open_code.doctrine.orm.naming_strategy.underscored_bundle_prefix',
+            'daily_info.doctrine.orm.naming_strategy.underscored_bundle_prefix',
             1,
             $configuration
         );
@@ -69,12 +69,12 @@ class ExtensionTest extends AbstractExtensionTestCase
 
         $this->load(array('underscored_class_namespace_prefix' => $configuration));
 
-        $this->assertContainerBuilderHasService('run_open_code.doctrine.orm.naming_strategy.underscored_class_namespace_prefix');
+        $this->assertContainerBuilderHasService('daily_info.doctrine.orm.naming_strategy.underscored_class_namespace_prefix');
 
         $configuration['case'] = CASE_LOWER;
 
         $this->assertContainerBuilderHasServiceDefinitionWithArgument(
-            'run_open_code.doctrine.orm.naming_strategy.underscored_class_namespace_prefix',
+            'daily_info.doctrine.orm.naming_strategy.underscored_class_namespace_prefix',
             0,
             $configuration
         );
@@ -88,8 +88,8 @@ class ExtensionTest extends AbstractExtensionTestCase
         $configuration = array(
             'default' => 'doctrine.orm.naming_strategy.underscore',
             'namers' => array(
-                'run_open_code.doctrine.orm.naming_strategy.underscored_class_namespace_prefix',
-                'run_open_code.doctrine.orm.naming_strategy.underscored_bundle_prefix'
+                'daily_info.doctrine.orm.naming_strategy.underscored_class_namespace_prefix',
+                'daily_info.doctrine.orm.naming_strategy.underscored_bundle_prefix'
             ),
             'concatenation' => NamerCollection::UNDERSCORE,
             'joinTableFieldSuffix' => true
@@ -97,16 +97,16 @@ class ExtensionTest extends AbstractExtensionTestCase
 
         $this->load(array('namer_collection' => $configuration));
 
-        $this->assertContainerBuilderHasService('run_open_code.doctrine.orm.naming_strategy.namer_collection');
+        $this->assertContainerBuilderHasService('daily_info.doctrine.orm.naming_strategy.namer_collection');
 
         $this->assertContainerBuilderHasServiceDefinitionWithArgument(
-            'run_open_code.doctrine.orm.naming_strategy.namer_collection',
+            'daily_info.doctrine.orm.naming_strategy.namer_collection',
             1,
             $configuration['namers']
         );
 
         $this->assertContainerBuilderHasServiceDefinitionWithArgument(
-            'run_open_code.doctrine.orm.naming_strategy.namer_collection',
+            'daily_info.doctrine.orm.naming_strategy.namer_collection',
             2,
             array(
                 'concatenation' => $configuration['concatenation'],

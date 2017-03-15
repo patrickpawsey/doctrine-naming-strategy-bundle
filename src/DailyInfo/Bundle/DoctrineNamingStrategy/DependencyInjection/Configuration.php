@@ -1,15 +1,15 @@
 <?php
 /*
- * This file is part of the Doctrine Naming Strategy Bundle, an RunOpenCode project.
+ * This file is part of the Doctrine Naming Strategy Bundle, an DailyInfo project.
  *
- * (c) 2016 RunOpenCode
+ * (c) 2016 DailyInfo
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace RunOpenCode\Bundle\DoctrineNamingStrategy\DependencyInjection;
+namespace DailyInfo\Bundle\DoctrineNamingStrategy\DependencyInjection;
 
-use RunOpenCode\Bundle\DoctrineNamingStrategy\NamingStrategy\NamerCollection;
+use DailyInfo\Bundle\DoctrineNamingStrategy\NamingStrategy\NamerCollection;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -23,7 +23,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
 
-        $rootNode = $treeBuilder->root('run_open_code_doctrine_naming_strategy');
+        $rootNode = $treeBuilder->root('daily_info_doctrine_naming_strategy');
 
         $rootNode
             ->children()

@@ -1,13 +1,13 @@
 <?php
 /*
- * This file is part of the Doctrine Naming Strategy Bundle, an RunOpenCode project.
+ * This file is part of the Doctrine Naming Strategy Bundle, an DailyInfo project.
  *
- * (c) 2016 RunOpenCode
+ * (c) 2016 DailyInfo
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace RunOpenCode\Bundle\DoctrineNamingStrategy\NamingStrategy;
+namespace DailyInfo\Bundle\DoctrineNamingStrategy\NamingStrategy;
 
 use Doctrine\ORM\Mapping\UnderscoreNamingStrategy;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;

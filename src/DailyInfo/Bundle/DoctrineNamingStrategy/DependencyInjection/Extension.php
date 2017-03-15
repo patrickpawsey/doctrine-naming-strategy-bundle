@@ -1,13 +1,13 @@
 <?php
 /*
- * This file is part of the Doctrine Naming Strategy Bundle, an RunOpenCode project.
+ * This file is part of the Doctrine Naming Strategy Bundle, an DailyInfo project.
  *
- * (c) 2016 RunOpenCode
+ * (c) 2016 DailyInfo
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace RunOpenCode\Bundle\DoctrineNamingStrategy\DependencyInjection;
+namespace DailyInfo\Bundle\DoctrineNamingStrategy\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -34,7 +34,7 @@ class Extension extends BaseExtension
     }
 
     /**
-     * Configure 'run_open_code.doctrine.orm.naming_strategy.underscored_bundle_prefix' naming strategy.
+     * Configure 'daily_info.doctrine.orm.naming_strategy.underscored_bundle_prefix' naming strategy.
      *
      * @param ContainerBuilder $container
      * @param array $config
@@ -43,11 +43,11 @@ class Extension extends BaseExtension
     private function configureUnderscoredBundlePrefixNamer(ContainerBuilder $container, array $config)
     {
         if (
-            $container->hasDefinition('run_open_code.doctrine.orm.naming_strategy.underscored_bundle_prefix')
+            $container->hasDefinition('daily_info.doctrine.orm.naming_strategy.underscored_bundle_prefix')
             &&
             isset($config['underscored_bundle_prefix'])
         ) {
-            $definition = $container->getDefinition('run_open_code.doctrine.orm.naming_strategy.underscored_bundle_prefix');
+            $definition = $container->getDefinition('daily_info.doctrine.orm.naming_strategy.underscored_bundle_prefix');
 
             if ($config['underscored_bundle_prefix']['case'] == 'uppercase') {
                 $config['underscored_bundle_prefix']['case'] = CASE_UPPER;
@@ -65,7 +65,7 @@ class Extension extends BaseExtension
     }
 
     /**
-     * Configure 'run_open_code.doctrine.orm.naming_strategy.underscored_class_namespace_prefix' naming strategy.
+     * Configure 'daily_info.doctrine.orm.naming_strategy.underscored_class_namespace_prefix' naming strategy.
      *
      * @param ContainerBuilder $container
      * @param array $config
@@ -74,11 +74,11 @@ class Extension extends BaseExtension
     private function configureUnderscoredClassNamespacePrefixNamer(ContainerBuilder $container, array $config)
     {
         if (
-            $container->hasDefinition('run_open_code.doctrine.orm.naming_strategy.underscored_class_namespace_prefix')
+            $container->hasDefinition('daily_info.doctrine.orm.naming_strategy.underscored_class_namespace_prefix')
             &&
             isset($config['underscored_class_namespace_prefix'])
         ) {
-            $definition = $container->getDefinition('run_open_code.doctrine.orm.naming_strategy.underscored_class_namespace_prefix');
+            $definition = $container->getDefinition('daily_info.doctrine.orm.naming_strategy.underscored_class_namespace_prefix');
 
             if ($config['underscored_class_namespace_prefix']['case'] == 'uppercase') {
                 $config['underscored_class_namespace_prefix']['case'] = CASE_UPPER;
@@ -96,7 +96,7 @@ class Extension extends BaseExtension
     }
 
     /**
-     * Configure 'run_open_code.doctrine.orm.naming_strategy.namer_collection' naming strategy.
+     * Configure 'daily_info.doctrine.orm.naming_strategy.namer_collection' naming strategy.
      *
      * @param ContainerBuilder $container
      * @param array $config
@@ -105,11 +105,11 @@ class Extension extends BaseExtension
     private function configureNamerCollection(ContainerBuilder $container, array $config)
     {
         if (
-            $container->hasDefinition('run_open_code.doctrine.orm.naming_strategy.namer_collection')
+            $container->hasDefinition('daily_info.doctrine.orm.naming_strategy.namer_collection')
             &&
             isset($config['namer_collection'])
         ) {
-            $definition = $container->getDefinition('run_open_code.doctrine.orm.naming_strategy.namer_collection');
+            $definition = $container->getDefinition('daily_info.doctrine.orm.naming_strategy.namer_collection');
 
             $definition->setArguments(array(
                 new Reference($config['namer_collection']['default']),
@@ -131,6 +131,6 @@ class Extension extends BaseExtension
      */
     public function getAlias()
     {
-        return "run_open_code_doctrine_naming_strategy";
+        return "daily_info_doctrine_naming_strategy";
     }
 }
